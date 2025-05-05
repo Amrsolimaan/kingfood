@@ -1,0 +1,337 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>King Food</title>
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<link href="{% static 'css/open-iconic-bootstrap.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/animate.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/aos.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/jquery.timepicker.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/flaticon.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/icomoon.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+<style>
+    body {
+        font-family: 'Cairo', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .product-detail {
+        padding: 50px 0;
+        margin-bottom: 80px; /* المسافة بين المحتوى الرئيسي والتذييل */
+    }
+
+    .product-detail .product-image img {
+width: 100%; /* تأكيد ملء العنصر الحاوي */
+max-width: 100%; /* أقصى عرض للصورة */
+max-height: 450px; /* أقصى ارتفاع للصورة */
+min-height: 350px;
+height: auto; /* الحفاظ على النسبة البُعدية للصورة */
+object-fit: contain; /* الحفاظ على الصورة كاملة داخل العنصر */
+border-radius: 15px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+    .product-detail .product-info {
+        margin-top: 50px; /* تقليل المسافة العلوية للمعلومات */
+        text-align: right; /* محاذاة النصوص إلى اليمين */
+    }
+
+    .product-detail .product-info h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px; /* تقليل المسافة السفلية للعنوان */
+    }
+
+    .product-detail .product-info .description {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .rating {
+        font-size: 1rem; /* حجم الخط للنجوم */
+        color: #f0ad4e; /* لون النجوم */
+        margin-bottom: 20px; /* المسافة بين النجوم وبقية المحتوى */
+    }
+
+    .image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+
+.image-slider img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 2rem;
+}
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}
+
+          /* تنسيق القائمة لتكون العناصر بجانب بعضها */
+          .navbar-nav {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.nav-item {
+    margin: 0 10px; /* مساحة بين العناصر */
+}
+
+.nav-link {
+    white-space: nowrap; /* منع النص من الانكسار إلى سطر جديد */
+    padding: 10px 15px; /* مساحة داخلية حول النص */
+    font-size: 16px; /* حجم الخط */
+}
+
+/* تأكد من أن القائمة لا تنكسر في شاشات صغيرة */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
+    }
+
+    .nav-item {
+        margin: 5px 0; /* مساحة بين العناصر في الشاشات الصغيرة */
+    }
+}
+</style>
+</head>
+<body>
+    <div class="py-1 bg-primary">
+        <div class="container">
+        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+        <div class="col-lg-12 d-block">
+        <div class="row d-flex">
+        <div class="col-md pr-4 d-flex topper align-items-center">
+        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+        
+        <span class="text"><a href="https://wa.me/{{about_.phone_number1}}" target="_blank" style="color: white;">
+            {{ about_.phone_number2 }}
+        </a>
+        </div>
+        <div class="col-md pr-4 d-flex topper align-items-center">
+        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+        <span class="text"><a href="mailto:kingfood.eg@gmail.com" target="_blank" style="color: white;">{{ about_.gmail }}</a></span>
+        </div>
+        <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+        <span class="text"> المنتج الجيد يمنحك الشعور الجيد</span>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+        <a class="navbar-brand" href="{% url 'home'%}"><img alt="" src="{{about_.logo.url}}" width="15%"/></a>
+        <button aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#ftco-nav" data-toggle="collapse" type="button">
+        <span class="oi oi-menu"></span> Menu
+                  </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="{% url 'home'%}">الرئيسية</a></li>
+        <li class="nav-item active"><a class="nav-link" href="{% url 'shop'%}">المنتجات</a> </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about'%}">من نحن</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">اتصل بنا </a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'privacy' %}"> سياسة الجودة </a></li>
+
+        </ul>
+        </div>
+        </div>
+        </nav>
+<main>
+    <section class="product-detail container" >
+        <div class="row">
+            <div class="col-lg-6 product-image order-lg-2">
+                {% if posts %}
+                <div class="image-slider">
+                    <button class="slider-btn prev">&#10094;</button>
+                    <img id="slider-image" alt="صورة المنتج" src="{{ posts.photo1.url }}"/>
+                    <button class="slider-btn next">&#10095;</button>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-6 product-info order-lg-1">
+                <h1>{{ posts.name }}</h1>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="description">{{ posts.description }}</p>
+            </div>
+        </div>
+    </section>
+    </main>
+    
+    <footer class="ftco-footer ftco-section">
+        <div class="container">
+        <div class="row">
+        <div class="mouse">
+        <a class="mouse-icon" href="#">
+        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+        </a>
+        </div>
+        </div>
+        <div class="row mb-5">
+        <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+        <h2 class="ftco-heading-2">كينج فود</h2>
+        <p>مطابق لمواصفات ومعايير الجودة العالمية واسعار لا تقبل المنافسة  </p>
+        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+        <li class="ftco-animate">
+        <a href="{{about_.Tiktok}}" target="_blank">
+        <span class="fab fa-tiktok"></span>
+        </a>
+        </li>
+        <li class="ftco-animate"><a href="https://www.facebook.com/profile.php?id=100063560977761&amp;mibextid=LQQJ4d" target="_blank"><span class="icon-facebook"></span></a></li>
+        </ul>
+        </div>
+        </div>
+        <div class="col-md">
+        <div class="ftco-footer-widget mb-4 ml-md-5">
+        <h2 class="ftco-heading-2">القائمة</h2>
+        <ul class="list-unstyled">
+        <li><a class="py-2 d-block" href="{% url 'home'%}">الرئيسية</a></li>
+        <li><a class="py-2 d-block" href="{% url 'shop'%}">المنتجات </a></li>
+        <li><a class="py-2 d-block" href="{% url 'about'%}">من نحن</a></li>
+        <li><a class="py-2 d-block" href="{% url 'privacy'%}">سياسة الجودة </a></li>
+
+        </ul>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="ftco-footer-widget mb-4">
+        <h2 class="ftco-heading-2">للمساعدة</h2>
+        <div class="d-flex">
+        <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+        <li><a class="py-2 d-block" href="{% url 'contact'%}">تواصل معنا</a></li>
+        <br/>
+        <li>للإجابة على أسئلتك الشائعة، يرجى التواصل  معنا</li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+        <h2 class="ftco-heading-2">هل تحتاج إلى مساعدة؟</h2>
+        <div class="block-23 mb-3">
+        <ul>
+        <li><span class="icon icon-map-marker"></span><span class="text">{{ about_.address }}</span></li> <br/>
+        <li><a href="https://wa.me/{{about_.phone_number1}}" target="_blank"><span class="icon icon-phone"></span><span class="text"> {{ about_.phone_number2 }}</span></a></li>
+        <li><a href="mailto:kingfood.eg@gmail.com" target="_blank"><span class="icon icon-envelope"></span><span class="text">{{ about_.gmail }}</span></a></li>
+        </ul>
+        </div>
+        </div>	
+        </div>
+        </div>
+        <p style="background-color: #82ae46 ; padding: 5px ; width: 100%; border-top: 5px solid #e5e5e5; margin-bottom: 0;"></p>
+        <p style="text-align: center; margin: 0; padding: 15px;" id="copy"></p>
+        <script>
+            const year = new Date().getFullYear();
+            document.getElementById("copy").innerHTML = `&copy; ${year} <a href="{% url 'home' %}"> kingfood</a>`;
+        </script>        </div>
+        </footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const images = [
+            '{{ posts.photo1.url }}',
+            '{{ posts.photo2.url }}',
+            '{{ posts.photo3.url }}',
+            '{{ posts.photo4.url }}',
+            '{{ posts.photo5.url }}'
+        ];
+
+        let currentIndex = 0;
+        const imgElement = document.getElementById('slider-image');
+
+        function showImage(index) {
+            imgElement.src = images[index];
+        }
+
+        document.querySelector('.slider-btn.next').addEventListener('click', function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        document.querySelector('.slider-btn.prev').addEventListener('click', function () {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        // Show the first image initially
+        showImage(currentIndex);
+    });
+</script>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&amp;sensor=false"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,392 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="ar" >
+<head>
+<title>King Food</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<link href="{% static 'css/open-iconic-bootstrap.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/animate.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/aos.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/jquery.timepicker.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/flaticon.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/icomoon.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+<style>
+				  .mb-2{
+
+			color: white;
+		  }
+
+          .slider {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* تعيين خصائص الصور */
+        .slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(70%); /* إضافة تأثير الظل للصور */
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+        }
+
+        .slider img.active {
+            opacity: 1;
+        }
+
+        /* تعيين خصائص النص */
+        .slider-text {
+            position: absolute;
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .slider-text h1, .slider-text h2, .slider-text p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider-text h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .slider-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .slider-text p {
+            margin-top: 1rem;
+        }
+
+          /* تنسيق القائمة لتكون العناصر بجانب بعضها */
+.navbar-nav {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.nav-item {
+    margin: 0 10px; /* مساحة بين العناصر */
+}
+
+.nav-link {
+    white-space: nowrap; /* منع النص من الانكسار إلى سطر جديد */
+    padding: 10px 15px; /* مساحة داخلية حول النص */
+    font-size: 16px; /* حجم الخط */
+}
+
+/* تأكد من أن القائمة لا تنكسر في شاشات صغيرة */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
+    }
+
+    .nav-item {
+        margin: 5px 0; /* مساحة بين العناصر في الشاشات الصغيرة */
+    }
+}
+
+	</style>
+</head>
+<body class="goto-here">
+<div class="py-1 bg-primary">
+<div class="container">
+<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+<div class="col-lg-12 d-block">
+<div class="row d-flex">
+<div class="col-md pr-4 d-flex topper align-items-center">
+<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+
+<span class="text"><a href="https://wa.me/{{about_.phone_number1}}" target="_blank" style="color: white;">
+	{{ about_.phone_number2 }}
+</a>
+</div>
+<div class="col-md pr-4 d-flex topper align-items-center">
+<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+<span class="text"><a href="mailto:kingfood.eg@gmail.com" target="_blank" style="color: white;">{{ about_.gmail }}</a></span>
+</div>
+<div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+<span class="text"> المنتج الجيد يمنحك الشعور الجيد</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+<div class="container">
+<a class="navbar-brand" href="{% url 'home'%}"><img alt="" src="{{about_.logo.url}}" width="15%"/></a>
+<button aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#ftco-nav" data-toggle="collapse" type="button">
+<span class="oi oi-menu"></span> Menu
+	      </button>
+<div class="collapse navbar-collapse" id="ftco-nav">
+<ul class="navbar-nav ml-auto">
+<li class="nav-item active" ><a class="nav-link" href="{% url 'home'%}">الرئيسية</a></li>
+<li class="nav-item active"><a class="nav-link" href="{% url 'shop'%}">المنتجات</a> </li>
+<li class="nav-item"><a class="nav-link" href="{% url 'about'%}">من نحن</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">اتصل بنا </a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'privacy' %}"> سياسة الجودة </a></li>
+
+</ul>
+</div>
+</div>
+</nav>
+<!-- END nav -->
+<div class="slider">
+    <img class="fade active" src="{% static 'images/المحصول.jpeg' %}" alt="Image 1">
+    <img class="fade" src="{% static 'images/is-garlic-a-vegetable-1296x728-feature.webp' %}" alt="Image 2">
+    <img class="fade" src="{% static 'images/Pickled-Garlic-Culinary-Hill-LR-03.webp' %}" alt="Image 3">
+    
+    <div class="slider-text">
+        <h1 class="mb-2">مرحبا بكم في شركة كينج فود</h1>
+        <h2 class="mb-2" style="color: white;">للثوم المخلل</h2>
+        <p><a class="btn btn-primary" href="{% url 'about'%}"> عن الشركة</a></p>
+    </div>
+</div>
+<section class="ftco-section bg-light" style="margin: 50px 0;">
+<div class="container">
+<div class="row no-gutters ftco-services" style="justify-content: center;">
+<div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+<div class="media block-6 services mb-md-0 mb-4">
+<div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
+<span class="flaticon-diet"></span>
+</div>
+<div class="media-body">
+<h3 class="heading">دائمًا طازج</h3>
+<span>المنتج معبأ بشكل جيد</span>
+</div>
+</div>
+</div>
+<div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+<div class="media block-6 services mb-md-0 mb-4">
+<div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
+<span class="flaticon-award"></span>
+</div>
+<div class="media-body">
+<h3 class="heading">جودة ممتازة</h3>
+<span>منتجات ذات جودة</span>
+</div>
+</div>
+</div>
+<div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
+<div class="media block-6 services mb-md-0 mb-4">
+<div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
+<span class="flaticon-customer-service"></span>
+</div>
+<div class="media-body">
+<h3 class="heading">الدعم</h3>
+<span>دعم متواصل على مدار الساعة</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="ftco-section ftco-category ftco-no-pt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    {% if container %}
+                    <div class="col-md-6 order-md-last align-items-stretch d-flex">
+                        <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url('{{ container.photo1.url }}'); margin-top: 20px;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url('{{ container.photo2.url }}'); margin-top: 20px;">
+                        </div>
+                        <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('{{ container.photo3.url }}');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url('{{ container.photo4.url }}'); margin-top: 20px;">
+                </div>
+                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url('{{ container.photo5.url }}');">
+                </div>
+            </div>
+        </div>
+		<p style="text-align: center; margin-top: 15px;"><a class="btn btn-primary" href="{% url 'products' container.id  %}">التفاصيل</a></p>
+        {% endif %}
+
+        <p class="ftco-section bg-light" style="text-align: center; padding: 5px; position: relative; top: 30px; color: #000; font-size: 20px;">
+            ثوم مقشر في محلول ملحي 
+            حجم 500/600/كجم
+            مكان المنشأ مصر 
+            صلاحية 2 سنوات
+            فترات التوريد على مدار العام 
+        </p>
+        <p class="ftco-section bg-light" style="text-align: center; padding: 5px; position: relative; top: 20px; color: #000; font-size: 20px;">
+            المكونات/ الثوم ، والماء ، والملح ، وحامض الستريك ،
+            درجة الملوحة 7% 
+            حمض الستريك 0,3 - 0,5% 
+            درجة الحموضة: 3-4
+        </p>
+    </div>
+</section>
+
+<section class="ftco-section">
+<div class="container">
+<div class="row justify-content-center mb-3 pb-3">
+<div class="col-md-12 heading-section text-center ftco-animate">
+<span class="subheading">  king foods بعض من منتجات شركة   </span>
+<h2 class="mb-4"> <img alt="" src="{{about_.logo.url}}" style="width: 20%;"/> </h2>
+<p>مطابق لمواصفات ومعايير الجودة العالمية واسعار لا تقبل المنافسة </p>
+</div>
+</div>
+</div>
+<div class="container">
+    <h3 class="mb-2" style="color: #000; text-align: center; padding-bottom:30px ;">احدث المنتجات لدينا </h3>
+    <div class="row">
+	{% for product in products%}
+<div class="col-md-6 col-lg-3 ftco-animate" >
+<div class="product">
+<a class="img-prod" href="{% url 'product' product.id %}"><img alt="Colorlib Template" class="img-fluid" src="{{product.photo.url}}" style=" min-width: 100%;
+    min-height: 100%;
+    object-fit: fill;
+    height: 300px;"/>
+<div class="overlay"></div>
+</a>
+<div class="text py-3 pb-4 px-3 text-center">
+<h3><a href="{% url 'product' product.id %}"> {{product.name}}</a></h3>
+<div class="d-flex">
+<div class="pricing">
+<p class="price"><span class="mr-2 price-dc"></span><span class="price-sale" > {{ product.weight}} </span></p>
+</div>
+</div>
+<div class="bottom-area d-flex px-3">
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+</section>
+<hr/>
+<footer class="ftco-footer ftco-section" style="padding-top: 7rem ;padding-bottom: 0;">
+<div class="container">
+<div class="row">
+<div class="mouse">
+<a class="mouse-icon" href="#">
+<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+</a>
+</div>
+</div>
+<div class="row mb-5">
+<div class="col-md">
+<div class="ftco-footer-widget mb-4">
+<h2 class="ftco-heading-2">كينج فود</h2>
+<p>مطابق لمواصفات ومعايير الجودة العالمية واسعار لا تقبل المنافسة  </p>
+<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+<li class="ftco-animate">
+<a href="{{about_.Tiktok}}" target="_blank">
+<span class="fab fa-tiktok"></span>
+</a>
+</li>
+<li class="ftco-animate"><a href="https://www.facebook.com/profile.php?id=100063560977761&amp;mibextid=LQQJ4d" target="_blank"><span class="icon-facebook"></span></a></li>
+</ul>
+</div>
+</div>
+<div class="col-md">
+<div class="ftco-footer-widget mb-4 ml-md-5">
+<h2 class="ftco-heading-2">القائمة</h2>
+<ul class="list-unstyled">
+<li><a class="py-2 d-block" href="{% url 'home'%}">الرئيسية</a></li>
+<li><a class="py-2 d-block" href="{% url 'shop'%}">المنتجات </a></li>
+<li><a class="py-2 d-block" href="{% url 'about'%}">من نحن</a></li>
+<li><a class="py-2 d-block" href="{% url 'privacy'%}">سياسة الخصوصية </a></li>
+
+</ul>
+</div>
+</div>
+<div class="col-md-4">
+<div class="ftco-footer-widget mb-4">
+<h2 class="ftco-heading-2">للمساعدة</h2>
+<div class="d-flex">
+<ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+<li><a class="py-2 d-block" href="{% url 'contact'%}">تواصل معنا</a></li>
+<br/>
+<li>للإجابة على أسئلتك الشائعة، يرجى التواصل  معنا</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md">
+<div class="ftco-footer-widget mb-4">
+<h2 class="ftco-heading-2">هل تحتاج إلى مساعدة؟</h2>
+<div class="block-23 mb-3">
+<ul>
+<li><span class="icon icon-map-marker"></span><span class="text">{{ about_.address }}</span></li> <br/>
+<li><a href="https://wa.me/{{about_.phone_number1}}" target="_blank"><span class="icon icon-phone"></span><span class="text"> {{ about_.phone_number2 }}</span></a></li>
+<li><a href="mailto:kingfood.eg@gmail.com" target="_blank"><span class="icon icon-envelope"></span><span class="text">{{ about_.gmail }}</span></a></li>
+</ul>
+</div>
+</div>	
+</div>
+</div>
+<p style="background-color: #82ae46 ; padding: 5px ; width: 100%; border-top: 5px solid #e5e5e5; margin-bottom: 0;"></p>
+<p style="text-align: center; margin: 0; padding: 15px;" id="copy"></p>
+<script>
+    const year = new Date().getFullYear();
+    document.getElementById("copy").innerHTML = `&copy; ${year} <a href="{% url 'home' %}"> kingfood</a>`;
+</script>
+</div>
+</footer>
+<!-- loader -->
+
+
+<script>
+    // جافا سكريبت لتبديل الصور
+    const images = document.querySelectorAll('.slider img');
+    let currentIndex = 0;
+
+    function showNextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+
+    setInterval(showNextImage, 3000); // تبديل الصورة كل 3 ثوانٍ
+</script>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&amp;sensor=false"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>

@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Food</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="{% static 'css/open-iconic-bootstrap.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/animate.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/aos.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/jquery.timepicker.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/flaticon.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/icomoon.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+<!-- تضمين CSS لـ Lightbox -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+<style>
+/* CSS لإضافة تنسيق معرض الصور */
+.image-gallery {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.image-item {
+    text-align: center;
+}
+
+.image-item img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+          /* تنسيق القائمة لتكون العناصر بجانب بعضها */
+          .navbar-nav {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.nav-item {
+    margin: 0 10px; /* مساحة بين العناصر */
+}
+
+.nav-link {
+    white-space: nowrap; /* منع النص من الانكسار إلى سطر جديد */
+    padding: 10px 15px; /* مساحة داخلية حول النص */
+    font-size: 16px; /* حجم الخط */
+}
+
+/* تأكد من أن القائمة لا تنكسر في شاشات صغيرة */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
+    }
+
+    .nav-item {
+        margin: 5px 0; /* مساحة بين العناصر في الشاشات الصغيرة */
+    }
+}
+</style>
+</head>
+<body>
+    <div class="py-1 bg-primary">
+        <div class="container">
+        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+        <div class="col-lg-12 d-block">
+        <div class="row d-flex">
+        <div class="col-md pr-4 d-flex topper align-items-center">
+        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+        
+        <span class="text"><a href="https://wa.me/{{about_.phone_number1}}" target="_blank" style="color: white;">
+            {{ about_.phone_number2 }}
+        </a>
+        </div>
+        <div class="col-md pr-4 d-flex topper align-items-center">
+        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+        <span class="text"><a href="mailto:kingfood.eg@gmail.com" target="_blank" style="color: white;">{{ about_.gmail }}</a></span>
+        </div>
+        <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+        <span class="text"> المنتج الجيد يمنحك الشعور الجيد</span>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+        <a class="navbar-brand" href="{% url 'home'%}"><img alt="" src="{{about_.logo.url}}" width="15%"/></a>
+        <button aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#ftco-nav" data-toggle="collapse" type="button">
+        <span class="oi oi-menu"></span> Menu
+                  </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="{% url 'home'%}">الرئيسية</a></li>
+        <li class="nav-item active"><a class="nav-link" href="{% url 'shop'%}">المنتجات</a> </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about'%}">من نحن</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">اتصل بنا </a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'privacy' %}"> سياسة الجودة </a></li>
+
+        
+        </ul>
+        </div>
+        </div>
+        </nav>
+
+        
+        <div class="hero-wrap hero-bread" style="background-color: #82ae46;">
+            <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">
+          <span style="font-size: 30px; color: #333;">سياسة الجودة لدينا
+            وراء كل تنظيم ومؤسسة ناحجة ، هناك موظفين مشاركين تتم إدارتهم بشكل صحيح بالإضافة إلى التطورات التكنولوجية والدراسات الهندسية</span>
+                          </h1>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+            <section class="product-detail container" style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 20px; margin-top: 100px;">
+                <div class="row" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 20px;">
+                    
+                    <!-- {% block content %}
+                    {% endblock %} -->
+                    {% for i in Quality %}
+                    <div class="col-lg-6 product-image" style="max-width: 50%; text-align: center; ">
+                        <img alt="صورة المنتج" src="{{i.photo.url}}" style="width: 100%; max-width: 550px; height: auto; max-height: 450px;"/>
+                    </div>
+                    
+                    <div class="col-lg-6 product-info" style="max-width: 50%; text-align: center;">
+                        <h1 style="font-size: 1.3rem; margin-bottom: 20px;">{{i.Description}}</h1>
+                    </div>
+                    {% endfor %}
+
+                    
+                </div>
+            </section>
+            
+
+            
+
+
+            <footer class="ftco-footer ftco-section">
+                <div class="container">
+                <div class="row">
+                <div class="mouse">
+
+                </div>
+                </div>
+                <div class="row mb-5">
+                <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">كينج فود</h2>
+                <p>مطابق لمواصفات ومعايير الجودة العالمية واسعار لا تقبل المنافسة  </p>
+                <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate">
+                <a href="{{about_.Tiktok}}" target="_blank">
+                <span class="fab fa-tiktok"></span>
+                </a>
+                </li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/profile.php?id=100063560977761&amp;mibextid=LQQJ4d" target="_blank"><span class="icon-facebook"></span></a></li>
+                </ul>
+                </div>
+                </div>
+                <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                <h2 class="ftco-heading-2">القائمة</h2>
+                <ul class="list-unstyled">
+                <li><a class="py-2 d-block" href="{% url 'home'%}">الرئيسية</a></li>
+                <li><a class="py-2 d-block" href="{% url 'shop'%}">المنتجات </a></li>
+                <li><a class="py-2 d-block" href="{% url 'about'%}">من نحن</a></li>
+                <li><a class="py-2 d-block" href="{% url 'privacy'%}">سياسة الجودة </a></li>
+
+                </ul>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">للمساعدة</h2>
+                <div class="d-flex">
+                <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+                <li><a class="py-2 d-block" href="{% url 'contact'%}">تواصل معنا</a></li>
+                <br/>
+                <li>للإجابة على أسئلتك الشائعة، يرجى التواصل  معنا</li>
+                </ul>
+                </div>
+                </div>
+                </div>
+                <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">هل تحتاج إلى مساعدة؟</h2>
+                <div class="block-23 mb-3">
+                <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">{{ about_.address }}</span></li> <br/>
+                <li><a href="https://wa.me/{{about_.phone_number1}}" target="_blank"><span class="icon icon-phone"></span><span class="text"> {{ about_.phone_number2 }}</span></a></li>
+                <li><a href="mailto:kingfood.eg@gmail.com" target="_blank"><span class="icon icon-envelope"></span><span class="text">{{ about_.gmail }}</span></a></li>
+                </ul>
+                </div>
+                </div>	
+                </div>
+                </div>
+                <p style="background-color: #82ae46 ; padding: 5px ; width: 100%; border-top: 5px solid #e5e5e5; margin-bottom: 0;"></p>
+                <p style="text-align: center; margin: 0; padding: 15px;" id="copy"></p>
+                <script>
+                    const year = new Date().getFullYear();
+                    document.getElementById("copy").innerHTML = `&copy; ${year} <a href="{% url 'home' %}"> kingfood</a>`;
+                </script>                </div>
+                </footer>
+                <script src="{% static 'js/jquery.min.js' %}"></script>
+                <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+                <script src="{% static 'js/popper.min.js' %}"></script>
+                <script src="{% static 'js/bootstrap.min.js' %}"></script>
+                <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+                <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+                <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+                <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+                <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+                <script src="{% static 'js/aos.js' %}"></script>
+                <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+                <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+                <script src="{% static 'js/scrollax.min.js' %}"></script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&amp;sensor=false"></script>
+                <script src="{% static 'js/google-map.js' %}"></script>
+                <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

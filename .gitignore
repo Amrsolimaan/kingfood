@@ -1,0 +1,15 @@
+# Python bytecode
+*.py[cod]
+__pycache__/
+
+# Django stuff:
+*.log
+db.sqlite3
+media/
+staticfiles/
+.env
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
